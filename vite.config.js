@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
 import replace from '@rollup/plugin-replace';
+import EnvironmentPlugin from "vite-plugin-environment";
 
 dotenv.config();
 
@@ -17,11 +18,8 @@ export default defineConfig({
 				format: 'esm', // Set the format to 'esm'
 			},
 			plugins: [
-				replace({
-					'process.env': JSON.stringify(import.meta.env),
-					preventAssignment: true, // Set preventAssignment to true
 
-				}),
+				EnvironmentPlugin(['OPENAI_KEY']),
 			],
 		},
 	},

@@ -1,8 +1,8 @@
 import { Configuration, OpenAIApi } from 'openai'
-import { process } from './env'
+
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: import.meta.env.OPENAI_KEY,
 })
 
 const openai = new OpenAIApi(configuration)
@@ -19,7 +19,7 @@ document.addEventListener('submit', (e) => {
     console.log(conversationStr)
 
 
-    // fetchReply()
+    fetchReply()
     const newSpeechBubble = document.createElement('div')
     newSpeechBubble.classList.add('speech', 'speech-human')
     chatbotConversation.appendChild(newSpeechBubble)
