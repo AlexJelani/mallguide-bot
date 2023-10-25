@@ -1,11 +1,43 @@
 import { Configuration, OpenAIApi } from 'openai'
+let openai;
 
+// const configuration = new Configuration({
+//     apiKey: import.meta.env.OPENAI_KEY,
+// })
+//
+// const openai = new OpenAIApi(configuration)
 
-const configuration = new Configuration({
-    apiKey: import.meta.env.OPENAI_KEY,
-})
+async function getOpenAIKey() {
+    try {
+        const apiKeyResponse = await fetch('/.netlify/functions/fetchAI'); // Update the URL to match your Netlify function endpoint
+        const apiKeyData = await apiKeyResponse.json();
+        return apiKeyData.apiKey;
+    } catch (error) {
+        // Handle error
+        console.error('Failed to fetch API key', error);
+        return null;
+    }
+}
 
-const openai = new OpenAIApi(configuration)
+async function initializeOpenAI() {
+    const apiKey = await getOpenAIKey();
+
+    if (apiKey) {
+        const configuration = new Configuration({
+            apiKey,
+        });
+
+        openai = new OpenAIApi(configuration);
+
+        // You can now use 'openai' for your API calls
+    } else {
+        // Handle the case where the API key retrieval failed
+        console.error('API key not available');
+    }
+}
+
+initializeOpenAI();
+
 
 const chatbotConversation = document.getElementById('chatbot-conversation')
 
@@ -16,7 +48,6 @@ document.addEventListener('submit', (e) => {
     e.preventDefault()
     const userInput = document.getElementById('user-input')
     conversationStr += userInput.value
-    console.log(conversationStr)
 
 
     fetchReply()
@@ -33,11 +64,11 @@ async function fetchReply(){
         model: 'davinci:ft-personal-2023-10-23-12-21-47',
         prompt: conversationStr,
         presence_penalty: 0,
-        frequency_penalty: 0.3
+        frequency_penalty: 0.3,
+        max_tokens:100
     })
-    console.log(response)
-    // conversationStr.push(response.data.choices[0].message)
-    // renderTypewriterText(response.data.choices[0].message.content)
+    conversationStr += response.data.choices[0].text
+    renderTypewriterText(response.data.choices[0].text)
 }
 
 function renderTypewriterText(text) {
