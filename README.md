@@ -1,21 +1,45 @@
-# co3cc41988fd513f4276a9b12
+# Mallbot - Fine-tuned Mall Assistant Bot
 
-Quick start:
+A fine-tuned AI Mallbot - using OpenAI API, Netlify, and Google Cloud Functions. Developed "Mallbot" for store location assistance and general mall inquiries.
 
-```
-$ npm install
-$ npm start
-````
+## Project Description
 
-Head over to https://vitejs.dev/ to learn more about using vite
-## About Scrimba
+- Developed a custom mall assistant bot called "Mallbot" through the fine-tuning of a language model.
+- Performed fine-tuning on a pre-trained model using proprietary data, resulting in a highly specialized and context-aware conversational AI system.
+- Crafted responses tailored to user queries by training the model on a dataset stored in a structured JSONL format.
+- Generated custom fine-tuned data, enhancing the bot's understanding and providing accurate and relevant responses to user inquiries.
+- Improved the model's performance by optimizing hyperparameters, including the use of n_epochs to increase the response rate.
+- Implemented a serverless function for secure retrieval of the OpenAI API key, ensuring efficient and secure communication with external services.
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+This project showcases my proficiency in natural language processing, data fine-tuning, and your ability to build practical AI solutions. 
 
-- [Our courses](https://scrimba.com/allcourses)
-- [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
+![Mallbot](images/mallbot.png)
 
-Happy Coding!
+## Tech Stack
+
+- OpenAI
+- Netlify
+- Google Cloud Functions
+- JavaScript
+- JSONL
+- AI Fine-tuning
+
+## Features
+
+- **Conversational AI**: Mallbot provides context-aware responses for store location assistance and mall-related queries.
+- **Fine-tuned Data**: The model is trained on custom fine-tuned data for improved performance.
+- **Secure Communication**: Securely communicate with external services using serverless functions.
+
+## Dependencies
+
+This project relies on the following technologies and libraries:
+
+- [OpenAI API](https://openai.com)
+- [Netlify](https://netlify.com)
+- [Google Cloud Functions](https://cloud.google.com/functions)
+
+This project was made possible by the OpenAI API, enabling powerful natural language processing capabilities. Special thanks to the OpenAI team for their contributions to the field.
+
+Feel free to explore the code and documentation to learn more about Mallbot and its capabilities.
+
+
