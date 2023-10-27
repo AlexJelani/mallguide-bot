@@ -70,3 +70,7 @@ env,js
 
 #env
 .env
+
+./env
+
+./netlify/functions

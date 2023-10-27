@@ -47,8 +47,7 @@ let conversationStr = ''
 document.addEventListener('submit', (e) => {
     e.preventDefault()
     const userInput = document.getElementById('user-input')
-    conversationStr += `${userInput.value}`
-
+    conversationStr += ` ${userInput.value} ->`
 
     fetchReply()
     const newSpeechBubble = document.createElement('div')
@@ -59,15 +58,21 @@ document.addEventListener('submit', (e) => {
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight
 })
 
+
+// const prompt = `
+//     You are an expert mall guide assistant. Your sole responsibility is to provide responses based exclusively on the user's input and the model 'davinci:ft-personal-2023-10-26-08-00-34.'
+// `
+
+
 async function fetchReply(){
     const response = await openai.createCompletion({
-        model: 'davinci:ft-personal-2023-10-26-08-00-34',
+        model: 'davinci:ft-personal-2023-10-27-02-31-48',
         prompt: conversationStr,
         presence_penalty: 0,
         frequency_penalty: 0.3,
-        max_tokens:300,
+        max_tokens:100,
         temperature:0,
-        stop: ['\n']
+        stop: ['\n', '->']
     })
     conversationStr += ` ${response.data.choices[0].text} \n`
     renderTypewriterText(response.data.choices[0].text)
@@ -88,3 +93,5 @@ function renderTypewriterText(text) {
         chatbotConversation.scrollTop = chatbotConversation.scrollHeight
     }, 50)
 }
+//new
+// openai api completions.create -m davinci:ft-personal-2023-10-27-02-31-48 -p <YOUR_PROMPT>
