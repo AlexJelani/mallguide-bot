@@ -65,7 +65,7 @@ async function fetchReply(){
         prompt: conversationStr,
         presence_penalty: 0,
         frequency_penalty: 0.3,
-        max_tokens:150,
+        max_tokens:300,
         temperature:0,
         stop: ['\n']
     })
