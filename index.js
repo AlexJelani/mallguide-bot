@@ -47,7 +47,7 @@ let conversationStr = ''
 document.addEventListener('submit', (e) => {
     e.preventDefault()
     const userInput = document.getElementById('user-input')
-    conversationStr += userInput.value
+    conversationStr += `${userInput.value}`
 
 
     fetchReply()
@@ -61,13 +61,15 @@ document.addEventListener('submit', (e) => {
 
 async function fetchReply(){
     const response = await openai.createCompletion({
-        model: 'davinci:ft-personal-2023-10-23-12-21-47',
+        model: 'davinci:ft-personal-2023-10-26-08-00-34',
         prompt: conversationStr,
         presence_penalty: 0,
         frequency_penalty: 0.3,
-        max_tokens:100
+        max_tokens:100,
+        temperature:0,
+        stop: ['\n']
     })
-    conversationStr += response.data.choices[0].text
+    conversationStr += ` ${response.data.choices[0].text} \n`
     renderTypewriterText(response.data.choices[0].text)
 }
 
