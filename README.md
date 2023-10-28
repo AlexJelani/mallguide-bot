@@ -13,7 +13,7 @@ A fine-tuned AI Mallbot - using OpenAI API, Netlify, and Google Cloud Functions.
 
 This project showcases my proficiency in natural language processing, data fine-tuning, and your ability to build practical AI solutions. 
 
-![](images/jelaniportfolio.png)
+![](images/mallbotfullscreen.png)
 ## Tech Stack
 
 - OpenAI
